@@ -1,0 +1,112 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+---
+
+<Layout title={`我们的服务 | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" data-layout="services" class="app-layout">
+    <section id="services-hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
+      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+        我们的服务
+      </h1>
+      <p>
+        我们为客户提供全面的IT服务，包括IT运维、电脑维修、系统安装等，7×24小时在线支持。
+      </p>
+    </section>
+
+    <!-- 服务详情区域 -->
+    <section id="services-details" class="pt-12 pb-6">
+      <!-- IT运维服务 -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">IT运维服务</h2>
+        <p class="mb-4">
+          我们提供全面的IT运维管理服务，包括系统维护、网络管理、数据备份等。
+        </p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>7×24小时在线支持</li>
+          <li>平均响应时间2小时</li>
+          <li>确保系统持续稳定运行</li>
+          <li>硬件故障诊断与维修</li>
+          <li>软件问题解决</li>
+        </ul>
+      </div>
+
+      <!-- 电脑维修服务 -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">电脑维修服务</h2>
+        <p class="mb-4">
+          我们提供专业的电脑维修服务，支持 Dell、HP、Lenovo、Apple 等品牌。
+        </p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>硬件故障诊断与维修</li>
+          <li>软件问题解决</li>
+          <li>数据恢复服务</li>
+          <li>电脑升级与优化</li>
+          <li>病毒查杀与防护</li>
+        </ul>
+      </div>
+
+      <!-- 系统安装升级服务 -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">系统安装升级服务</h2>
+        <p class="mb-4">
+          我们提供 Windows、Linux 系统安装、软件部署、系统升级迁移等服务。
+        </p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>系统安装与配置</li>
+          <li>软件部署与配置</li>
+          <li>系统升级与迁移</li>
+          <li>驱动程序安装与更新</li>
+          <li>系统优化与性能调优</li>
+        </ul>
+      </div>
+
+      <!-- 网站建设服务 -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">网站建设服务</h2>
+        <p class="mb-4">
+          我们提供专业的网站建设服务，包括企业网站、电子商务网站、响应式网站等。
+        </p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>网站设计与开发</li>
+          <li>响应式网站建设</li>
+          <li>网站维护与更新</li>
+          <li>网站优化与推广</li>
+          <li>域名注册与主机托管</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 联系我们区域 -->
+    <section id="contact" class="pt-12 pb-6 bg-gray-50 rounded-lg p-6">
+      <h2 class="text-2xl font-semibold mb-4">联系我们</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <p class="mb-2">
+            <strong>服务热线：</strong>15123869818
+          </p>
+          <p class="mb-2">
+            <strong>邮箱：</strong>29483527@qq.com
+          </p>
+          <p class="mb-2">
+            <strong>公司地址：</strong>重庆市渝北区
+          </p>
+        </div>
+        <div>
+          <p>
+            您可以通过以下方式联系我们：
+          </p>
+          <ul class="list-disc pl-6 mt-2">
+            <li>拨打服务热线</li>
+            <li>填写在线咨询表单</li>
+            <li>发送邮件咨询</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

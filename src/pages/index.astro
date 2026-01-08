@@ -3,14 +3,11 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
-import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
-import { SOCIALS } from "@/constants";
 
 const posts = await getCollection("blog");
 
@@ -23,89 +20,120 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        公司介绍
-      </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
-      <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p>
-      <p class="mt-2">
-        Read the blog posts or check
-        <LinkButton
-          class="underline decoration-dashed underline-offset-4 hover:text-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
-      </p>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex max-sm:flex-col sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
-            <Socials />
-          </div>
-        )
-      }
+      <!-- Hero Section -->
+      <div class="flex flex-col items-center text-center">
+        <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+          云触角（重庆）科技有限公司
+        </h1>
+        <p class="text-lg max-w-2xl">
+          您身边的IT服务专家，提供IT运维、电脑维修、系统安装、网站建设等全方位IT解决方案
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <LinkButton href="/services" class="px-6 py-3 bg-accent text-background hover:bg-accent/90">
+            查看服务
+          </LinkButton>
+          <LinkButton href="/about" class="px-6 py-3 border border-border hover:bg-gray-50 dark:hover:bg-gray-900">
+            关于我们
+          </LinkButton>
+        </div>
+      </div>
     </section>
 
-    {
-      featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-b border-border": recentPosts.length > 0 },
-          ]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-          <ul>
+    <!-- 添加服务展示区域 -->
+    <section id="services" class="pt-12 pb-6">
+      <h2 class="text-2xl font-semibold tracking-wide">我们的服务</h2>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- IT运维服务卡片 -->
+        <div class="border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <h3 class="text-xl font-bold mb-3">IT运维服务</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
+            7×24小时在线支持，平均响应时间2小时，确保系统持续稳定运行。
+          </p>
+        </div>
+        
+        <!-- 电脑维修服务卡片 -->
+        <div class="border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <h3 class="text-xl font-bold mb-3">电脑维修服务</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
+            专业的电脑维修服务，支持Dell、HP、Lenovo、Apple等品牌。
+          </p>
+        </div>
+        
+        <!-- 系统安装升级服务卡片 -->
+        <div class="border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <h3 class="text-xl font-bold mb-3">系统安装升级</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
+            提供Windows、Linux系统安装、软件部署、系统升级迁移等服务。
+          </p>
+        </div>
+        
+        <!-- 网站建设服务卡片 -->
+        <div class="border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <h3 class="text-xl font-bold mb-3">网站建设服务</h3>
+          <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
+            专业的网站建设服务，包括企业网站、电子商务网站等。
+          </p>
+        </div>
+      </div>
+      <div class="my-8 text-center">
+        <LinkButton href="/services">
+          查看全部服务
+          <IconArrowRight class="inline-block rtl:-rotate-180" />
+        </LinkButton>
+      </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section id="about" class="pt-12 pb-6 bg-gray-50 rounded-lg p-6">
+      <h2 class="text-2xl font-semibold tracking-wide">关于我们</h2>
+      <p class="mt-4">
+        云触角（重庆）科技有限公司是一家专业的IT服务提供商，致力于为企业和个人提供高质量的IT运维、电脑维修、系统安装、网站建设等服务。
+      </p>
+      <p class="mt-2">
+        我们拥有一支经验丰富的技术团队，7×24小时在线支持，确保客户的IT系统持续稳定运行。
+      </p>
+      <div class="mt-4">
+        <LinkButton href="/about">
+          了解更多
+          <IconArrowRight class="inline-block rtl:-rotate-180" />
+        </LinkButton>
+      </div>
+    </section>
+
+    <!-- 博客文章 -->
+    <section id="blog" class="pt-12 pb-6">
+      <h2 class="text-2xl font-semibold tracking-wide">最新动态</h2>
+      
+      {featuredPosts.length > 0 && (
+        <div class="mt-6">
+          <h3 class="text-xl font-semibold">推荐文章</h3>
+          <ul class="mt-3">
             {featuredPosts.map(data => (
               <Card variant="h3" {...data} />
             ))}
           </ul>
-        </section>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
-          <ul>
+        </div>
+      )}
+      
+      {recentPosts.length > 0 && (
+        <div class="mt-6">
+          <h3 class="text-xl font-semibold">最新文章</h3>
+          <ul class="mt-3">
             {recentPosts.map(
               (data, index) =>
                 index < SITE.postPerIndex && <Card variant="h3" {...data} />
             )}
           </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
-      <LinkButton href="/posts/">
-        All Posts
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
+        </div>
+      )}
+      
+      <div class="my-8 text-center">
+        <LinkButton href="/posts/">
+          查看全部文章
+          <IconArrowRight class="inline-block rtl:-rotate-180" />
+        </LinkButton>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>
